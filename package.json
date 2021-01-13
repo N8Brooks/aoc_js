@@ -1,0 +1,19 @@
+{
+  "name": "aoc_js",
+  "version": "1.0.0",
+  "description": "Advent of code solutions in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N8Brooks/aoc_js.git"
+  },
+  "author": "Nathan Brooks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N8Brooks/aoc_js/issues"
+  },
+  "homepage": "https://github.com/N8Brooks/aoc_js#readme"
+}
