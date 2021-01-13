@@ -1,7 +1,9 @@
+// @flow
+
 import chai from "chai";
 import { readFileSync } from "fs";
 
-import { part1, part2 } from "../../aoc/year2016/day03.js";
+import { part1, part2 } from "../../src/year2016/day03.js";
 
 const text = readFileSync("data/year2016/day03.txt", "utf8");
 
