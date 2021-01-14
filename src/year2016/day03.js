@@ -1,7 +1,4 @@
-// @flow
-
 import _ from "lodash";
-import { readFileSync } from "fs";
 
 function process(text) {
   return text
@@ -23,8 +20,3 @@ export function part2(text) {
     .map((col) => _.chunk(col, 3).reduce(total, 0))
     .reduce((a, b) => a + b);
 }
-
-const text = readFileSync("data/year2016/day03.txt", "utf8");
-
-console.log(part1(text));
-console.log(part2(text));

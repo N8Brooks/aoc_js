@@ -1,8 +1,5 @@
-// @flow
-
 import _ from "lodash";
 import { add, complex, multiply } from "mathjs";
-import { readFileSync } from "fs";
 
 function process(text) {
   function turn(direction) {
@@ -48,8 +45,3 @@ export function part2(text) {
     }
   }
 }
-
-const text = readFileSync("data/year2016/day01.txt", "utf8");
-
-console.log(part1(text));
-console.log(part2(text));
