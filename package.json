@@ -25,6 +25,7 @@
     "fs": "0.0.1-security",
     "lodash": "^4.17.20",
     "mathjs": "^8.1.1",
+    "md5": "^2.3.0",
     "mocha": "^8.2.1"
   },
   "devDependencies": {
