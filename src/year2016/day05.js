@@ -11,7 +11,6 @@ function* hash(text, start) {
     const hexadecimal = md5(`${prefix}${i++}`);
     if (hexadecimal.startsWith(start)) {
       yield hexadecimal;
-      console.log(hexadecimal);
     }
   }
 }
