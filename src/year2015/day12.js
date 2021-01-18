@@ -1,16 +1,16 @@
 export function part1(text) {
-  const queue = [JSON.parse(text)];
+  const stack = [JSON.parse(text)];
   let total = 0;
 
-  while (queue.length) {
-    const node = queue.pop();
+  while (stack.length) {
+    const node = stack.pop();
 
     if (Number.isInteger(node)) {
       total += node;
     } else if (Array.isArray(node)) {
-      queue.push(...node);
+      stack.push(...node);
     } else if (node instanceof Object) {
-      queue.push(...Object.values(node));
+      stack.push(...Object.values(node));
     }
   }
 
@@ -18,18 +18,18 @@ export function part1(text) {
 }
 
 export function part2(text) {
-  const queue = [JSON.parse(text)];
+  const stack = [JSON.parse(text)];
   let total = 0;
 
-  while (queue.length) {
-    const node = queue.pop();
+  while (stack.length) {
+    const node = stack.pop();
 
     if (Number.isInteger(node)) {
       total += node;
     } else if (Array.isArray(node)) {
-      queue.push(...node);
+      stack.push(...node);
     } else if (node instanceof Object && !Object.values(node).includes("red")) {
-      queue.push(...Object.values(node));
+      stack.push(...Object.values(node));
     }
   }
 
