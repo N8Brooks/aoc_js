@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha --reporter spec 'tst/**/*.js'",
-    "lint": "eslint .",
-    "build": "babel src/ -d lib/"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,7 @@
     "aoc": "^0.0.5",
     "chai": "^4.2.0",
     "fs": "0.0.1-security",
+    "js-combinatorics": "^1.4.5",
     "lodash": "^4.17.20",
     "mathjs": "^8.1.1",
     "md5": "^2.3.0",
