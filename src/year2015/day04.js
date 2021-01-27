@@ -1,10 +1,10 @@
-import md5 from "md5";
+import { createHash } from "crypto";
 
 function process(text, start) {
-  const prefix = text.trim();
+  const prefix = createHash("md5").update(text.trim());
 
   for (let i = 0; ; i++) {
-    if (md5(prefix + i).startsWith(start)) {
+    if (prefix.copy().update(i.toString()).digest("hex").startsWith(start)) {
       return i;
     }
   }
