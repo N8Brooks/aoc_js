@@ -1,12 +1,34 @@
 import _ from "lodash";
-import { add, complex, multiply } from "mathjs";
+import { add, mult } from "../utils/math.js";
+
+export function part1(text) {
+  const [turns, dists] = process(text);
+
+  return manhattan(turns.map((turn, i) => mult(turn, [dists[i], 0])).reduce(add));
+}
+
+export function part2(text) {
+  const seen = new Set();
+  let sum = [0, 0];
+
+  for (const [turn, dist] of _.zip(...process(text))) {
+    for (let i = 0; i < dist; i++) {
+      sum = add(sum, turn);
+      const key = `${sum[0]},${sum[1]}`;
+      if (seen.has(key)) {
+        return manhattan(sum);
+      }
+      seen.add(key);
+    }
+  }
+}
 
 function process(text) {
   function turn(direction) {
-    return direction === "L" ? complex(0, 1) : complex(0, -1);
+    return direction === "L" ? [0, 1] : [0, -1];
   }
 
-  const accumulate = ((sum) => (value) => (sum = multiply(sum, value)))(1);
+  const accumulate = ((sum) => (value) => (sum = mult(sum, value)))([1, 0]);
 
   const [, turns, dists] = _.zip(
     ...text
@@ -18,30 +40,6 @@ function process(text) {
   return [turns.map(turn).map(accumulate), dists.map(Number)];
 }
 
-function manhatten(location) {
-  return Math.abs(location.re) + Math.abs(location.im);
-}
-
-export function part1(text) {
-  const [turns, dists] = process(text);
-
-  return manhatten(
-    turns.map((turn, i) => multiply(turn, dists[i])).reduce((a, b) => add(a, b))
-  );
-}
-
-export function part2(text) {
-  const [turns, dists] = process(text);
-  const seen = new Set();
-  let sum = complex(0, 0);
-
-  for (let i = 0; ; i++) {
-    const turn = turns[i];
-    for (let j = 0; j < dists[i]; j++) {
-      sum = add(sum, turn);
-      const key = `${sum.re},${sum.im}`;
-      if (seen.has(key)) return manhatten(sum);
-      seen.add(key);
-    }
-  }
+function manhattan(location) {
+  return Math.abs(location[0]) + Math.abs(location[1]);
 }
