@@ -34,7 +34,7 @@ Aligator would loose 360 happiness units by sitting next to Irwin.
 `;
 
 describe("part1", function () {
-  it.skip("input", () => {
+  it("input", () => {
     chai.expect(part1(text)).to.equal(709);
   });
 
@@ -48,7 +48,7 @@ describe("part1", function () {
 });
 
 describe("part2", function () {
-  it.skip("input", () => {
+  it("input", () => {
     chai.expect(part2(text)).to.equal(668);
   });
 
