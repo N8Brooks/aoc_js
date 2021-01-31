@@ -1,10 +1,10 @@
-import { add, complex } from "mathjs";
+import { add } from "../utils/math.js";
 
 const dirs = {
-  L: complex(-1, 0),
-  U: complex(0, 1),
-  R: complex(1, 0),
-  D: complex(0, -1),
+  L: [-1, 0],
+  U: [0, 1],
+  R: [1, 0],
+  D: [0, -1],
 };
 
 const keypad_a = new Map([
@@ -38,7 +38,7 @@ const keypad_b = new Map([
 function simulate(text, keys, start) {
   function act(cur, move) {
     const nxt = add(cur, dirs[move]);
-    return (keys.has(`${nxt.re},${nxt.im}`) && nxt) || cur;
+    return (keys.has(`${nxt[0]},${nxt[1]}`) && nxt) || cur;
   }
 
   function row(loc, moves) {
@@ -49,13 +49,13 @@ function simulate(text, keys, start) {
 
   const keycode = text.trim().split("\n").map(accumulate);
 
-  return keycode.map((key) => keys.get(`${key.re},${key.im}`)).join("");
+  return keycode.map((key) => keys.get(`${key[0]},${key[1]}`)).join("");
 }
 
-export function part1(text, initial = complex(0, 0)) {
+export function part1(text, initial = [0, 0]) {
   return simulate(text, keypad_a, initial);
 }
 
-export function part2(text, initial = complex(-2, 0)) {
+export function part2(text, initial = [-2, 0]) {
   return simulate(text, keypad_b, initial);
 }
