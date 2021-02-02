@@ -20,6 +20,10 @@ describe("part1", () => {
   it("example", () => {
     chai.expect(part1(example)).to.equal(514579);
   });
+
+  it("error", () => {
+    chai.expect(() => part1("")).to.throw(Error);
+  });
 });
 
 describe("part2", () => {
