@@ -1,5 +1,4 @@
 import _ from "lodash";
-
 import { Counter } from "../utils/collections.js";
 
 export function part1(text) {

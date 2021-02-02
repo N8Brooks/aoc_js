@@ -1,5 +1,4 @@
 import _ from "lodash";
-
 import { windowed } from "../utils/itertools.js";
 
 function process(ip) {

@@ -1,19 +1,6 @@
+import { createHash } from "crypto";
 import _ from "lodash";
-import md5 from "md5";
-
 import { islice } from "../utils/itertools.js";
-
-function* hash(text, start) {
-  const prefix = text.trim();
-  let i = 0;
-
-  while (true) {
-    const hexadecimal = md5(`${prefix}${i++}`);
-    if (hexadecimal.startsWith(start)) {
-      yield hexadecimal;
-    }
-  }
-}
 
 export function part1(text, length = 8, start = "00000") {
   return Array.from(islice(hash(text, start), 0, length, 1))
@@ -37,4 +24,20 @@ export function part2(text, length = 8, start = "00000") {
   const hashes = hash(text, start);
 
   return _.range(length).map(char).join("");
+}
+
+function* hash(text, start) {
+  const prefix = createHash("md5").update(text.trim());
+  let i = 0;
+
+  while (true) {
+    const hexadecimal = prefix
+      .copy()
+      .update((i++).toString())
+      .digest("hex");
+
+    if (hexadecimal.startsWith(start)) {
+      yield hexadecimal;
+    }
+  }
 }

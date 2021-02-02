@@ -1,6 +1,5 @@
 import chai from "chai";
 import { readFileSync } from "fs";
-
 import { part1, part2 } from "../../src/year2015/day05.js";
 
 const text = readFileSync("data/year2015/day05.txt", "utf8");
