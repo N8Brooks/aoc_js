@@ -16,30 +16,32 @@ aaa[kek]eke
 zazbz[bzb]cdb
 `;
 
-describe("part1", () => {
-  it("input", () => {
-    chai.expect(part1(text)).to.equal(115);
+describe("day07", () => {
+  describe("part1", () => {
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(115);
+    });
+
+    it("example1", () => {
+      chai.expect(part1(example1)).to.equal(2);
+    });
+
+    it("example2", () => {
+      chai.expect(part1(example2)).to.equal(0);
+    });
   });
 
-  it("example1", () => {
-    chai.expect(part1(example1)).to.equal(2);
-  });
+  describe("part2", () => {
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(231);
+    });
 
-  it("example2", () => {
-    chai.expect(part1(example2)).to.equal(0);
-  });
-});
+    it("example1", () => {
+      chai.expect(part2(example1)).to.equal(0);
+    });
 
-describe("part2", () => {
-  it("input", () => {
-    chai.expect(part2(text)).to.equal(231);
-  });
-
-  it("example1", () => {
-    chai.expect(part2(example1)).to.equal(0);
-  });
-
-  it("example2", () => {
-    chai.expect(part2(example2)).to.equal(3);
+    it("example2", () => {
+      chai.expect(part2(example2)).to.equal(3);
+    });
   });
 });

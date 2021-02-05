@@ -32,30 +32,32 @@ Aligator would gain 1500 happiness units by sitting next to Carol.
 Aligator would loose 360 happiness units by sitting next to Irwin.
 `;
 
-describe("part1", function () {
-  it("input", () => {
-    chai.expect(part1(text)).to.equal(709);
+describe("day13", () => {
+  describe("part1", function () {
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(709);
+    });
+
+    it("example", () => {
+      chai.expect(part1(example)).to.equal(330);
+    });
+
+    it("mock", () => {
+      chai.expect(part1(mock)).to.equal(1682);
+    });
   });
 
-  it("example", () => {
-    chai.expect(part1(example)).to.equal(330);
-  });
+  describe("part2", function () {
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(668);
+    });
 
-  it("mock", () => {
-    chai.expect(part1(mock)).to.equal(1682);
-  });
-});
+    it("example", () => {
+      chai.expect(part2(example)).to.equal(286);
+    });
 
-describe("part2", function () {
-  it("input", () => {
-    chai.expect(part2(text)).to.equal(668);
-  });
-
-  it("example", () => {
-    chai.expect(part2(example)).to.equal(286);
-  });
-
-  it("mock", () => {
-    chai.expect(part2(mock)).to.equal(1812);
+    it("mock", () => {
+      chai.expect(part2(mock)).to.equal(1812);
+    });
   });
 });

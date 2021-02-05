@@ -22,22 +22,24 @@ dvrsen
 enarar
 `;
 
-describe("part1", () => {
-  it("input", () => {
-    chai.expect(part1(text)).to.equal("gyvwpxaz");
+describe("day06", () => {
+  describe("part1", () => {
+    it("input", () => {
+      chai.expect(part1(text)).to.equal("gyvwpxaz");
+    });
+
+    it("example", () => {
+      chai.expect(part1(example)).to.equal("easter");
+    });
   });
 
-  it("example", () => {
-    chai.expect(part1(example)).to.equal("easter");
-  });
-});
+  describe("part2", () => {
+    it("input", () => {
+      chai.expect(part2(text)).to.equal("jucfoary");
+    });
 
-describe("part2", () => {
-  it("input", () => {
-    chai.expect(part2(text)).to.equal("jucfoary");
-  });
-
-  it("example", () => {
-    chai.expect(part2(example)).to.equal("advent");
+    it("example", () => {
+      chai.expect(part2(example)).to.equal("advent");
+    });
   });
 });

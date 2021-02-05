@@ -12,30 +12,32 @@ const example = `1721
 1456
 `;
 
-describe("part1", () => {
-  it("input", () => {
-    chai.expect(part1(text)).to.equal(482811);
+describe("day01", () => {
+  describe("part1", () => {
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(482811);
+    });
+
+    it("example", () => {
+      chai.expect(part1(example)).to.equal(514579);
+    });
+
+    it("error", () => {
+      chai.expect(() => part1("")).to.throw(Error);
+    });
   });
 
-  it("example", () => {
-    chai.expect(part1(example)).to.equal(514579);
-  });
+  describe("part2", () => {
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(193171814);
+    });
 
-  it("error", () => {
-    chai.expect(() => part1("")).to.throw(Error);
-  });
-});
+    it("example", () => {
+      chai.expect(part2(example)).to.equal(241861950);
+    });
 
-describe("part2", () => {
-  it("input", () => {
-    chai.expect(part2(text)).to.equal(193171814);
-  });
-
-  it("example", () => {
-    chai.expect(part2(example)).to.equal(241861950);
-  });
-
-  it("error", () => {
-    chai.expect(() => part2("")).to.throw(Error);
+    it("error", () => {
+      chai.expect(() => part2("")).to.throw(Error);
+    });
   });
 });

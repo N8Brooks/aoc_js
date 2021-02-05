@@ -9,22 +9,24 @@ const example = `1-3 a: abcde
 2-9 c: ccccccccc
 `;
 
-describe("part1", () => {
-  it("input", () => {
-    chai.expect(part1(text)).to.equal(591);
+describe("day02", () => {
+  describe("part1", () => {
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(591);
+    });
+
+    it("example", () => {
+      chai.expect(part1(example)).to.equal(2);
+    });
   });
 
-  it("example", () => {
-    chai.expect(part1(example)).to.equal(2);
-  });
-});
+  describe("part2", () => {
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(335);
+    });
 
-describe("part2", () => {
-  it("input", () => {
-    chai.expect(part2(text)).to.equal(335);
-  });
-
-  it("example", () => {
-    chai.expect(part2(example)).to.equal(1);
+    it("example", () => {
+      chai.expect(part2(example)).to.equal(1);
+    });
   });
 });

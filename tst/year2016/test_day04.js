@@ -13,30 +13,32 @@ totally-real-room-200[decoy]
 const example2 = `qzmt-zixmtkozy-ivhz-343[zimth]
 `;
 
-describe("part1", () => {
-  it("input", () => {
-    chai.expect(part1(text)).to.equal(361724);
+describe("day04", () => {
+  describe("part1", () => {
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(361724);
+    });
+
+    it("example 1", () => {
+      chai.expect(part1(example1)).to.equal(1514);
+    });
+
+    it("example 2", () => {
+      chai.expect(part1(example2)).to.equal(343);
+    });
   });
 
-  it("example 1", () => {
-    chai.expect(part1(example1)).to.equal(1514);
-  });
+  describe("part2", () => {
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(482);
+    });
 
-  it("example 2", () => {
-    chai.expect(part1(example2)).to.equal(343);
-  });
-});
+    it("example 1", () => {
+      chai.expect(part2(example1, "z a b c d e f g")).to.equal(987);
+    });
 
-describe("part2", () => {
-  it("input", () => {
-    chai.expect(part2(text)).to.equal(482);
-  });
-
-  it("example 1", () => {
-    chai.expect(part2(example1, "z a b c d e f g")).to.equal(987);
-  });
-
-  it("example 2", () => {
-    chai.expect(part2(example2, "very encrypted name")).to.equal(343);
+    it("example 2", () => {
+      chai.expect(part2(example2, "very encrypted name")).to.equal(343);
+    });
   });
 });
