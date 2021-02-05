@@ -18,7 +18,6 @@ export function part1(text) {
       i++;
     } else if (op === "jmp") {
       i += num;
-      continue;
     } else {
       i++;
     }
