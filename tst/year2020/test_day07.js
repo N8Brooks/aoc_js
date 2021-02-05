@@ -4,7 +4,7 @@ import { part1, part2 } from "../../src/year2020/day07.js";
 
 const text = readFileSync("data/year2020/day07.txt", "utf8");
 
-const example_1 = `light red bags contain 1 bright white bag, 2 muted yellow bags.
+const example1 = `light red bags contain 1 bright white bag, 2 muted yellow bags.
 dark orange bags contain 3 bright white bags, 4 muted yellow bags.
 bright white bags contain 1 shiny gold bag.
 muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.
@@ -15,7 +15,7 @@ faded blue bags contain no other bags.
 dotted black bags contain no other bags.
 `;
 
-const example_2 = `shiny gold bags contain 2 dark red bags.
+const example2 = `shiny gold bags contain 2 dark red bags.
 dark red bags contain 2 dark orange bags.
 dark orange bags contain 2 dark yellow bags.
 dark yellow bags contain 2 dark green bags.
@@ -30,11 +30,11 @@ describe("part1", () => {
   });
 
   it("example 1", () => {
-    chai.expect(part1(example_1)).to.equal(4);
+    chai.expect(part1(example1)).to.equal(4);
   });
 
   it("example 2", () => {
-    chai.expect(part1(example_2)).to.equal(0);
+    chai.expect(part1(example2)).to.equal(0);
   });
 });
 
@@ -44,10 +44,10 @@ describe("part2", () => {
   });
 
   it("example 1", () => {
-    chai.expect(part2(example_1)).to.equal(32);
+    chai.expect(part2(example1)).to.equal(32);
   });
 
   it("example 2", () => {
-    chai.expect(part2(example_2)).to.equal(126);
+    chai.expect(part2(example2)).to.equal(126);
   });
 });

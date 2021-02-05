@@ -4,13 +4,13 @@ import { part1, part2 } from "../../src/year2016/day04.js";
 
 const text = readFileSync("data/year2016/day04.txt", "utf8");
 
-const example_1 = `aaaaa-bbb-z-y-x-123[abxyz]
+const example1 = `aaaaa-bbb-z-y-x-123[abxyz]
 a-b-c-d-e-f-g-h-987[abcde]
 not-a-real-room-404[oarel]
 totally-real-room-200[decoy]
 `;
 
-const example_2 = `qzmt-zixmtkozy-ivhz-343[zimth]
+const example2 = `qzmt-zixmtkozy-ivhz-343[zimth]
 `;
 
 describe("part1", () => {
@@ -19,11 +19,11 @@ describe("part1", () => {
   });
 
   it("example 1", () => {
-    chai.expect(part1(example_1)).to.equal(1514);
+    chai.expect(part1(example1)).to.equal(1514);
   });
 
   it("example 2", () => {
-    chai.expect(part1(example_2)).to.equal(343);
+    chai.expect(part1(example2)).to.equal(343);
   });
 });
 
@@ -33,10 +33,10 @@ describe("part2", () => {
   });
 
   it("example 1", () => {
-    chai.expect(part2(example_1, "z a b c d e f g")).to.equal(987);
+    chai.expect(part2(example1, "z a b c d e f g")).to.equal(987);
   });
 
   it("example 2", () => {
-    chai.expect(part2(example_2, "very encrypted name")).to.equal(343);
+    chai.expect(part2(example2, "very encrypted name")).to.equal(343);
   });
 });

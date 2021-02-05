@@ -4,7 +4,7 @@ import { part1, part2 } from "../../src/year2020/day04.js";
 
 const text = readFileSync("data/year2020/day04.txt", "utf8");
 
-const example_1 = `ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+const example1 = `ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
 iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
@@ -19,7 +19,7 @@ hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in
 `;
 
-const example_2 = `eyr:1972 cid:100
+const example2 = `eyr:1972 cid:100
 hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926
 
 iyr:2019
@@ -54,11 +54,11 @@ describe("part1", () => {
   });
 
   it("example 1", () => {
-    chai.expect(part1(example_1)).to.equal(2);
+    chai.expect(part1(example1)).to.equal(2);
   });
 
   it("example 2", () => {
-    chai.expect(part1(example_2)).to.equal(4);
+    chai.expect(part1(example2)).to.equal(4);
   });
 
   it("example 3", () => {
@@ -72,11 +72,11 @@ describe("part2", () => {
   });
 
   it("example 1", () => {
-    chai.expect(part2(example_1)).to.equal(2);
+    chai.expect(part2(example1)).to.equal(2);
   });
 
   it("example 2", () => {
-    chai.expect(part2(example_2)).to.equal(0);
+    chai.expect(part2(example2)).to.equal(0);
   });
 
   it("example 3", () => {
