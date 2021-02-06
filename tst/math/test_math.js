@@ -1,5 +1,5 @@
 import chai from "chai";
-import { add, comp, mult, sub } from "../../src/utils/math.js";
+import { add, comp, manhattan, mult, sub } from "../../src/utils/math.js";
 
 describe("complex", () => {
   describe("comp", () => {
@@ -36,5 +36,27 @@ describe("complex", () => {
     it("northward", () => {
       chai.assert.deepEqual(mult([0, -1], [0, 1]), [1, 0]);
     });
+  });
+});
+
+describe("manhattan", () => {
+  it("first quadrant", () => {
+    chai.assert.equal(manhattan([5, 3]), 8);
+  });
+
+  it("second quadrant", () => {
+    chai.assert.equal(manhattan([5, -3]), 8);
+  });
+
+  it("third quadrant", () => {
+    chai.assert.equal(manhattan([-5, -3]), 8);
+  });
+
+  it("fourth quadrant", () => {
+    chai.assert.equal(manhattan([-5, 3]), 8);
+  });
+
+  it("non default", () => {
+    chai.assert.equal(manhattan([5, 3], [1, 1]), 6);
   });
 });
