@@ -37,6 +37,7 @@ export function part1(text) {
 
 export function part2(text) {
   let waypoint = [10, 1];
+
   return manhattan(text.trim().split("\n").reduce(move, [0, 0]));
 
   function move(pos, line) {
