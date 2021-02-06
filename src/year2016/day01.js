@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { add, mult } from "../utils/math.js";
+import { add, manhattan, mult } from "../utils/math.js";
 
 export function part1(text) {
   const [turns, dists] = process(text);
@@ -38,8 +38,4 @@ function process(text) {
   );
 
   return [turns.map(turn).map(accumulate), dists.map(Number)];
-}
-
-function manhattan(location) {
-  return Math.abs(location[0]) + Math.abs(location[1]);
 }
