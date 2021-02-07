@@ -30,11 +30,11 @@ describe("day10", () => {
     });
 
     it("example 1", () => {
-      chai.expect(part2(example_1, 5)).to.equal(8);
+      chai.expect(part2(example_1)).to.equal(8);
     });
 
     it("example 2", () => {
-      chai.expect(part2(example_2, 5)).to.equal(19208);
+      chai.expect(part2(example_2)).to.equal(19208);
     });
   });
 });

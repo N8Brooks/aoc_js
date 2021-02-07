@@ -28,7 +28,7 @@ describe("day12", () => {
     });
 
     it("example", () => {
-      chai.expect(part2(example, 5)).to.equal(286);
+      chai.expect(part2(example)).to.equal(286);
     });
   });
 });
