@@ -61,8 +61,6 @@ export function part2(text) {
         default:
           operands.push(+token);
       }
-
-      // console.log(operates, operands);
     }
 
     while (operates.length) {
