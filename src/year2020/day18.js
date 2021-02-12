@@ -69,10 +69,6 @@ export function part2(text) {
 
     return operands[0] ?? 0;
   }
-
-  function compute(operates, operands) {
-    operands.push(operates.pop()(operands.pop(), operands.pop()));
-  }
 }
 
 function add(a, b) {
@@ -81,4 +77,8 @@ function add(a, b) {
 
 function mult(a, b) {
   return a * b;
+}
+
+function compute(operates, operands) {
+  operands.push(operates.pop()(operands.pop(), operands.pop()));
 }
