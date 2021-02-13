@@ -1,12 +1,12 @@
 export function part1(text) {
-  return text.split("\n").reduce((sum, line) => sum + calculate(line), 0);
+  return text.split("\n").reduce((sum, expression) => sum + evaluate(expression), 0);
 
-  function calculate(expression) {
+  function evaluate(expression) {
     const stack = [];
-    let operate = add;
     let operand = 0;
+    let operate = add;
 
-    for (const [token] of expression.matchAll(/\+|\*|\(|\)|\d+/g)) {
+    for (const token of expression.replaceAll(" ", "")) {
       switch (token) {
         case "+":
           operate = add;
@@ -16,8 +16,8 @@ export function part1(text) {
           break;
         case "(":
           stack.push(operand, operate);
-          operate = add;
           operand = 0;
+          operate = add;
           break;
         case ")":
           operand = stack.pop()(stack.pop(), operand);
@@ -32,42 +32,43 @@ export function part1(text) {
 }
 
 export function part2(text) {
-  return text.split("\n").reduce((sum, line) => sum + calculate(line), 0);
+  return text.split("\n").reduce((sum, expression) => sum + evaluate(expression), 0);
 
-  function calculate(expression) {
-    const operates = [];
-    const operands = [];
+  function evaluate(expression) {
+    const stack = [];
+    let operand = 0;
+    let operate = add;
 
-    for (const [token] of expression.matchAll(/\+|\*|\(|\)|\d+/g)) {
+    for (const token of expression.replaceAll(" ", "")) {
       switch (token) {
         case "+":
-          operates.push(add);
+          operate = add;
           break;
         case "*":
-          while (operates.length && operates[operates.length - 1] === add) {
-            compute(operates, operands);
-          }
-          operates.push(mult);
+          stack.push(operand, mult);
+          operand = 0;
+          operate = add;
           break;
         case "(":
-          operates.push(undefined);
+          stack.push(operand, operate, undefined);
+          operand = 0;
+          operate = add;
           break;
         case ")":
-          while (operates.length && operates[operates.length - 1] !== undefined) {
-            compute(operates, operands);
+          while (stack.pop() !== undefined) {
+            operand *= stack.pop();
           }
-          operates.pop();
+          if (stack[stack.length - 1] === add) {
+            stack.pop();
+            operand += stack.pop();
+          }
           break;
         default:
-          operands.push(+token);
+          operand = operate(operand, +token);
       }
     }
 
-    while (operates.length) {
-      compute(operates, operands);
-    }
-
-    return operands[0] ?? 0;
+    return operand * stack.filter(Number.isInteger).reduce((a, b) => a * b, 1);
   }
 }
 
@@ -77,8 +78,4 @@ function add(a, b) {
 
 function mult(a, b) {
   return a * b;
-}
-
-function compute(operates, operands) {
-  operands.push(operates.pop()(operands.pop(), operands.pop()));
 }

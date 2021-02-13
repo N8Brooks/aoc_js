@@ -6,10 +6,6 @@ const text = readFileSync("data/year2020/day18.txt", "utf8");
 
 describe("day18", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(8929569623593);
-    });
-
     it("example 1", () => {
       chai.expect(part1("1 + 2 * 3 + 4 * 5 + 6")).to.equal(71);
     });
@@ -33,13 +29,13 @@ describe("day18", () => {
     it("example 6", () => {
       chai.expect(part1("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2")).to.equal(13632);
     });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(8929569623593);
+    });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(231235959382961);
-    });
-
     it("example 1", () => {
       chai.expect(part2("1 + 2 * 3 + 4 * 5 + 6")).to.equal(231);
     });
@@ -62,6 +58,10 @@ describe("day18", () => {
 
     it("example 6", () => {
       chai.expect(part2("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2")).to.equal(23340);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(231235959382961);
     });
   });
 });
