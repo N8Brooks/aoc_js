@@ -4,6 +4,7 @@ const update = [
   ["8", "42 | 42 8"],
   ["11", "42 31 | 42 11 31"],
 ];
+
 export function part1(text) {
   const [raw, messages] = text.trim().split("\n\n");
   const rules = new Map(raw.split("\n").map((line) => line.split(": ")));
