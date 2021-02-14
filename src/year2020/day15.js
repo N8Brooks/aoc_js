@@ -1,5 +1,3 @@
-// TODO: top down style algorithm?
-
 export function part1(text, index = 2020) {
   return process(text, index);
 }
@@ -13,13 +11,14 @@ function process(text, index) {
   const nums = text.trim().split(",").map(Number);
   nums.forEach((num, i) => void (ages[num] = i + 1));
 
-  let seen;
   let previous = nums[nums.length - 1];
-  for (let i = nums.length; i < index; i++) {
-    seen = i - ages[previous];
-    ages[previous] = i;
-    previous = isNaN(seen) ? 0 : seen;
+  for (let i, j = nums.length; j < index; j++) {
+    i = ages[previous];
+    ages[previous] = j;
+    previous = i === undefined ? 0 : j - i;
   }
 
   return previous;
 }
+
+part1("0,3,6", 11);
