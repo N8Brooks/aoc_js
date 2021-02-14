@@ -1,5 +1,7 @@
 import _ from "lodash";
 
+// TODO: more robust language processing algorithm
+
 const update = [
   ["8", "42 | 42 8"],
   ["11", "42 31 | 42 11 31"],

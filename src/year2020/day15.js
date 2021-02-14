@@ -1,3 +1,5 @@
+// TODO: top down style algorithm?
+
 export function part1(text, index = 2020) {
   return process(text, index);
 }

@@ -1,3 +1,5 @@
+// TODO: pre-compute neighbors so that they don't have to be checked 8x
+
 const directions = [
   [-1, -1],
   [-1, 0],

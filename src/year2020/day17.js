@@ -1,6 +1,8 @@
 import { CartesianProduct } from "js-combinatorics/commonjs/combinatorics.js";
 import _ from "lodash";
 
+// TODO: implement as trie structure
+
 export function part1(text, dimensions = 3) {
   return process(text, dimensions);
 }
