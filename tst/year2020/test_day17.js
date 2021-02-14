@@ -25,7 +25,7 @@ describe("day17", () => {
       chai.expect(part2(example)).to.equal(848);
     });
 
-    it.skip("input", () => {
+    it("input", () => {
       chai.expect(part2(text)).to.equal(2696);
     });
   });
