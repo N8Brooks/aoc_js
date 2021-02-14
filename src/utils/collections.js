@@ -1,8 +1,13 @@
 export class Counter {
   constructor(elements) {
     this.counts = new Map();
+    elements && this.update(elements);
+  }
+
+  update(elements) {
+    const counts = this.counts;
     for (const key of elements) {
-      this.counts.set(key, (this.counts.get(key) ?? 0) + 1);
+      counts.set(key, (this.counts.get(key) ?? 0) + 1);
     }
   }
 
