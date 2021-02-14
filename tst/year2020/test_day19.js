@@ -88,7 +88,7 @@ describe("day19", () => {
     });
 
     it("example 1", () => {
-      chai.expect(part1(example1)).to.equal(2);
+      chai.expect(part2(example1)).to.equal(2);
     });
 
     it("example 2", () => {
