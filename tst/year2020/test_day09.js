@@ -28,22 +28,22 @@ const example = `35
 
 describe("day09", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(22477624);
-    });
-
     it("example", () => {
       chai.expect(part1(example, 5)).to.equal(127);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(22477624);
     });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(2980044);
-    });
-
     it("example", () => {
       chai.expect(part2(example, 5)).to.equal(62);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(2980044);
     });
   });
 });

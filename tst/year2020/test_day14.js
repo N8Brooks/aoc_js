@@ -18,22 +18,22 @@ mem[26] = 1
 
 describe("day14", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(14722016054794);
-    });
-
     it("example", () => {
       chai.expect(part1(example1)).to.equal(165);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(14722016054794);
     });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(3618217244644);
-    });
-
     it("example", () => {
       chai.expect(part2(example2)).to.equal(208);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(3618217244644);
     });
   });
 });

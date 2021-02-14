@@ -11,10 +11,6 @@ const example_2 = `28\n33\n18\n42\n31\n14\n46\n20\n48\n47\n24\n23\n49\n45\n19
 
 describe("day10", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(2760);
-    });
-
     it("example 1", () => {
       chai.expect(part1(example_1)).to.equal(35);
     });
@@ -22,19 +18,23 @@ describe("day10", () => {
     it("example 2", () => {
       chai.expect(part1(example_2)).to.equal(220);
     });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(2760);
+    });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(13816758796288);
-    });
-
     it("example 1", () => {
       chai.expect(part2(example_1)).to.equal(8);
     });
 
     it("example 2", () => {
       chai.expect(part2(example_2)).to.equal(19208);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(13816758796288);
     });
   });
 });

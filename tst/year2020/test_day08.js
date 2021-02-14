@@ -17,22 +17,22 @@ acc +6
 
 describe("day08", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(1766);
-    });
-
     it("example", () => {
       chai.expect(part1(example)).to.equal(5);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(1766);
     });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(1639);
-    });
-
     it("example", () => {
       chai.expect(part2(example)).to.equal(8);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(1639);
     });
   });
 });

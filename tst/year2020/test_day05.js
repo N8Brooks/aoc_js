@@ -6,10 +6,6 @@ const text = readFileSync("data/year2020/day05.txt", "utf8");
 
 describe("day05", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(953);
-    });
-
     it("example 1", () => {
       chai.expect(part1("FBFBBFFRLR")).to.equal(357);
     });
@@ -24,6 +20,10 @@ describe("day05", () => {
 
     it("example 4", () => {
       chai.expect(part1("BBFFBBFRLL")).to.equal(820);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(953);
     });
   });
 

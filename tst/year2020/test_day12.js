@@ -13,22 +13,22 @@ F11
 
 describe("day12", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(2847);
-    });
-
     it("example", () => {
       chai.expect(part1(example)).to.equal(25);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(2847);
     });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(29839);
-    });
-
     it("example", () => {
       chai.expect(part2(example)).to.equal(286);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(29839);
     });
   });
 });

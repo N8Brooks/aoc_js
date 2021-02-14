@@ -26,10 +26,6 @@ dark violet bags contain no other bags.
 
 describe("day07", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(205);
-    });
-
     it("example 1", () => {
       chai.expect(part1(example1)).to.equal(4);
     });
@@ -37,19 +33,23 @@ describe("day07", () => {
     it("example 2", () => {
       chai.expect(part1(example2)).to.equal(0);
     });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(205);
+    });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(80902);
-    });
-
     it("example 1", () => {
       chai.expect(part2(example1)).to.equal(32);
     });
 
     it("example 2", () => {
       chai.expect(part2(example2)).to.equal(126);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(80902);
     });
   });
 });

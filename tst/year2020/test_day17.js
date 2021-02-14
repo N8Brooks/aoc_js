@@ -11,22 +11,22 @@ const example = `.#.
 
 describe("day17", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(368);
-    });
-
     it("example", () => {
       chai.expect(part1(example)).to.equal(112);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(368);
     });
   });
 
   describe("part2", () => {
-    it.skip("input", () => {
-      chai.expect(part2(text)).to.equal(2696);
-    });
-
     it("example", () => {
       chai.expect(part2(example)).to.equal(848);
+    });
+
+    it.skip("input", () => {
+      chai.expect(part2(text)).to.equal(2696);
     });
   });
 });

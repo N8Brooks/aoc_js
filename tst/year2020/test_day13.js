@@ -10,22 +10,22 @@ const example = `939
 
 describe("day13", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(4722);
-    });
-
     it("example", () => {
       chai.expect(part1(example)).to.equal(295);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(4722);
     });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(825305207525452);
-    });
-
     it("example", () => {
       chai.expect(part2(example)).to.equal(1068781);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(825305207525452);
     });
   });
 });

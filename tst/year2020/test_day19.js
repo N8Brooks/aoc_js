@@ -69,10 +69,6 @@ aabbbbbaabbbaaaaaabbbbbababaaaaabbaaabba
 
 describe("day19", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(162);
-    });
-
     it("example 1", () => {
       chai.expect(part1(example1)).to.equal(2);
     });
@@ -80,19 +76,23 @@ describe("day19", () => {
     it("example 2", () => {
       chai.expect(part1(example2)).to.equal(3);
     });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(162);
+    });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(267);
-    });
-
     it("example 1", () => {
       chai.expect(part2(example1)).to.equal(2);
     });
 
     it("example 2", () => {
       chai.expect(part2(example2)).to.equal(12);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(267);
     });
   });
 });

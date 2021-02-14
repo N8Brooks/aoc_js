@@ -50,10 +50,6 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
 
 describe("day04", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(190);
-    });
-
     it("example 1", () => {
       chai.expect(part1(example1)).to.equal(2);
     });
@@ -65,13 +61,13 @@ describe("day04", () => {
     it("example 3", () => {
       chai.expect(part1(example_3)).to.equal(4);
     });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(190);
+    });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(121);
-    });
-
     it("example 1", () => {
       chai.expect(part2(example1)).to.equal(2);
     });
@@ -82,6 +78,10 @@ describe("day04", () => {
 
     it("example 3", () => {
       chai.expect(part2(example_3)).to.equal(4);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(121);
     });
   });
 });

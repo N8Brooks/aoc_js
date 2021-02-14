@@ -33,10 +33,6 @@ nearby tickets:
 
 describe("day16", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(32842);
-    });
-
     it("example 1", () => {
       chai.expect(part1(example1)).to.equal(71);
     });
@@ -44,19 +40,23 @@ describe("day16", () => {
     it("example 2", () => {
       chai.expect(part2(example2)).to.equal(1);
     });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(32842);
+    });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(2628667251989);
-    });
-
     it("example 1", () => {
       chai.expect(part2(example1)).to.equal(1);
     });
 
     it("example 2", () => {
       chai.expect(part2(example2)).to.equal(1);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(2628667251989);
     });
   });
 });

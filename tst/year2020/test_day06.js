@@ -28,10 +28,6 @@ b
 
 describe("day06", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(6532);
-    });
-
     it("example 1", () => {
       chai.expect(part1(example1)).to.equal(6);
     });
@@ -39,19 +35,23 @@ describe("day06", () => {
     it("example 2", () => {
       chai.expect(part1(example2)).to.equal(11);
     });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(6532);
+    });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(3427);
-    });
-
     it("example 1", () => {
       chai.expect(part2(example1)).to.equal(3);
     });
 
     it("example 2", () => {
       chai.expect(part2(example2)).to.equal(6);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(3427);
     });
   });
 });
