@@ -18,22 +18,22 @@ L.LLLLL.LL
 
 describe("day11", () => {
   describe("part1", () => {
-    it("input", () => {
-      chai.expect(part1(text)).to.equal(2178);
-    });
-
     it("example", () => {
       chai.expect(part1(example)).to.equal(37);
+    });
+
+    it("input", () => {
+      chai.expect(part1(text)).to.equal(2178);
     });
   });
 
   describe("part2", () => {
-    it("input", () => {
-      chai.expect(part2(text)).to.equal(1978);
-    });
-
     it("example", () => {
       chai.expect(part2(example)).to.equal(26);
+    });
+
+    it("input", () => {
+      chai.expect(part2(text)).to.equal(1978);
     });
   });
 });

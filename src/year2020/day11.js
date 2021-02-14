@@ -1,5 +1,3 @@
-// TODO: pre-compute neighbors so that they don't have to be checked 8x
-
 const directions = [
   [-1, -1],
   [-1, 0],
@@ -12,71 +10,84 @@ const directions = [
 ];
 
 export function part1(text, cap = 4) {
-  return process(text, cap, neighbors);
+  const [seats] = indexSeats(text);
+  const neighbors = Array.from(graph());
 
-  function neighbors(y1, x1, height, width, current) {
-    return directions.reduce((sum, [yd, xd]) => {
-      const y2 = y1 + yd;
-      const x2 = x1 + xd;
-      return 0 <= y2 && y2 < height && 0 <= x2 && x2 < width
-        ? sum + (current[y2][x2] === "#")
-        : sum;
-    }, 0);
+  return simulate(neighbors, cap);
+
+  function* graph() {
+    for (const [y, row] of seats.entries()) {
+      for (const x of row.keys()) {
+        yield directions
+          .map(([yd, xd]) => seats.get(y + yd)?.get(x + xd))
+          .filter((index) => index !== undefined);
+      }
+    }
   }
 }
 
 export function part2(text, cap = 5) {
-  return process(text, cap, neighbors);
+  const [seats, height, width] = indexSeats(text);
+  const neighbors = Array.from(graph());
 
-  function neighbors(y1, x1, height, width, current) {
-    return directions.reduce((sum, [dy, dx]) => {
-      let y2 = y1 + dy;
-      let x2 = x1 + dx;
-      while (0 <= y2 && y2 < height && 0 <= x2 && x2 < width) {
-        switch (current[y2][x2]) {
-          case "#":
-            return sum + 1;
-          case "L":
-            return sum;
-        }
-        y2 += dy;
-        x2 += dx;
+  return simulate(neighbors, cap);
+
+  function* graph() {
+    for (const [y1, row] of seats.entries()) {
+      for (const x1 of row.keys()) {
+        yield directions
+          .map(([yd, xd]) => adjacent(y1, x1, yd, xd))
+          .filter((index) => index !== undefined);
       }
-      return sum;
-    }, 0);
+    }
+  }
+
+  function adjacent(y1, x1, yd, xd) {
+    let y2 = y1 + yd;
+    let x2 = x1 + xd;
+    while (0 <= y2 && y2 < height && 0 <= x2 && x2 < width) {
+      const index = seats.get(y2)?.get(x2);
+      if (index !== undefined) {
+        return index;
+      }
+      y2 += yd;
+      x2 += xd;
+    }
   }
 }
 
-function process(text, cap, neighbors) {
-  let current = text
-    .trim()
-    .split("\n")
-    .map((row) => row.trim().split(""));
+function indexSeats(text) {
+  const processed = text.trim().split("\n");
+  let count = 0;
 
-  const height = current.length;
-  const width = current[0].length;
+  return [
+    new Map(processed.map((row, y) => [y, new Map(indexRow(row))])),
+    processed.length,
+    processed[0].length,
+  ];
 
-  let previous = Array.from({ length: height }, () => Array(width).fill(""));
+  function indexRow(row) {
+    return row
+      .split("")
+      .map((seat, x) => [seat, x])
+      .filter(([seat]) => seat === "L")
+      .map(([, x]) => [x, count++]);
+  }
+}
 
-  while (current.some((row, y) => previous[y].some((seat, x) => seat !== row[x]))) {
+function simulate(neighbors, cap) {
+  const length = neighbors.length;
+
+  let previous;
+  let current = Array(length).fill(false);
+
+  do {
     previous = current;
-    current = newCurrent();
-  }
-
-  return current.reduce((matSum, row) => {
-    return matSum + row.reduce((rowSum, seat) => rowSum + (seat === "#"), 0);
-  }, 0);
-
-  function newCurrent() {
-    return current.map((row, y) => {
-      return row.map((seat, x) => {
-        if (seat === "L") {
-          return neighbors(y, x, height, width, current) === 0 ? "#" : "L";
-        } else if (seat === "#") {
-          return neighbors(y, x, height, width, current) < cap ? "#" : "L";
-        }
-        return ".";
-      });
+    current = current.map((seat, i) => {
+      const count = neighbors[i].reduce((sum, j) => sum + current[j], 0);
+      return seat ? count < cap : count === 0;
     });
-  }
+  } while (current.some((seat, i) => previous[i] !== seat));
+
+  return current.reduce((sum, seat) => sum + seat, 0);
 }
