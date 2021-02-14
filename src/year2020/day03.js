@@ -7,23 +7,18 @@ const slopes = [
 ];
 
 export function part1(text, right = 3, down = 1) {
-  return process(text.trim().split("\n"), right, down);
+  const processed = text.trim().split("\n");
+  return process(processed, right, down, processed[0].length);
 }
 
 export function part2(text) {
   const processed = text.trim().split("\n");
-  return slopes.reduce((prod, [right, down]) => prod * process(processed, right, down), 1);
+  const length = processed[0].length;
+  return slopes.reduce((prod, [right, down]) => prod * process(processed, right, down, length), 1);
 }
 
-function process(processed, right, down) {
-  const length = processed[0].length;
-
-  const x = processed.reduce((sum, line, index) => {
-    if (index % down !== 0) {
-      return sum;
-    }
-    return sum + (line[((index * right) / down) % length] === "#");
+function process(processed, right, down, length) {
+  return processed.reduce((sum, line, index) => {
+    return index % down === 0 ? sum + (line[((index * right) / down) % length] === "#") : sum;
   }, 0);
-
-  return x;
 }
