@@ -2,6 +2,7 @@ export function part1(text) {
   const instruction = process(text);
   const length = instruction.length;
   const seen = new Set();
+
   let cumulative = 0;
   let i = 0;
 
@@ -28,15 +29,15 @@ export function part2(text) {
   const instruction = process(text);
   const length = instruction.length;
   const seen = new Set();
+
   let cumulative = 0;
   let swapped = false;
-  let result;
 
   return parse(0), cumulative;
 
   function parse(i) {
     if (seen.has(i)) {
-      return;
+      return false;
     }
 
     if (i === length) {
@@ -45,7 +46,7 @@ export function part2(text) {
 
     seen.add(i);
     const [op, num] = instruction[i];
-    result = op === "acc" ? acc(i, num) : op === "jmp" ? jmp(i, num) : nop(i, num);
+    const result = op === "acc" ? acc(i, num) : op === "jmp" ? jmp(i, num) : nop(i, num);
     seen.delete(i);
 
     return result;
