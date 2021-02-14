@@ -1,6 +1,6 @@
 import { manhattan, mult } from "../utils/math.js";
 
-const rotations = [
+const rot = [
   [1, 0],
   [0, -1],
   [-1, 0],
@@ -8,63 +8,71 @@ const rotations = [
 ];
 
 export function part1(text) {
-  let direction = [1, 0];
+  const pos = [0, 0];
+  let dir = [1, 0];
 
-  return manhattan(text.trim().split("\n").reduce(move, [0, 0]));
-
-  function move([posX, posY], line) {
+  for (const line of text.trim().split("\n")) {
     const num = +line.slice(1);
     switch (line[0]) {
       case "N":
-        return [posX, num + posY];
+        pos[1] += num;
+        break;
       case "E":
-        return [num + posX, posY];
+        pos[0] += num;
+        break;
       case "S":
-        return [posX, -num + posY];
+        pos[1] -= num;
+        break;
       case "W":
-        return [-num + posX, posY];
+        pos[0] -= num;
+        break;
       case "F":
-        return [num * direction[0] + posX, num * direction[1] + posY];
+        pos[0] += num * dir[0];
+        pos[1] += num * dir[1];
+        break;
       case "L":
-        direction = mult(direction, rotations[rotations.length - ((num / 90) % 4)]);
-        return [posX, posY];
+        dir = mult(dir, rot[4 - ((num / 90) % 4)]);
+        break;
       case "R":
-        direction = mult(direction, rotations[(num / 90) % 4]);
-        return [posX, posY];
+        dir = mult(dir, rot[(num / 90) % 4]);
+        break;
     }
   }
+
+  return manhattan(pos);
 }
 
 export function part2(text) {
-  let waypoint = [10, 1];
+  const pos = [0, 0];
+  let way = [10, 1];
 
-  return manhattan(text.trim().split("\n").reduce(move, [0, 0]));
-
-  function move(pos, line) {
+  for (const line of text.trim().split("\n")) {
     const num = +line.slice(1);
     switch (line[0]) {
       case "N":
-        waypoint = [waypoint[0], waypoint[1] + num];
+        way[1] += num;
         break;
       case "E":
-        waypoint = [num + waypoint[0], waypoint[1]];
+        way[0] += num;
         break;
       case "S":
-        waypoint = [waypoint[0], -num + waypoint[1]];
+        way[1] -= num;
         break;
       case "W":
-        waypoint = [-num + waypoint[0], waypoint[1]];
+        way[0] -= num;
         break;
       case "F":
-        return [pos[0] + num * waypoint[0], pos[1] + num * waypoint[1]];
+        pos[0] += num * way[0];
+        pos[1] += num * way[1];
+        break;
       case "L":
-        waypoint = mult(waypoint, rotations[rotations.length - ((num / 90) % 4)]);
+        way = mult(way, rot[4 - ((num / 90) % 4)]);
         break;
       case "R":
-        waypoint = mult(waypoint, rotations[(num / 90) % 4]);
+        way = mult(way, rot[(num / 90) % 4]);
         break;
     }
-
-    return pos;
   }
+
+  return manhattan(pos);
 }
