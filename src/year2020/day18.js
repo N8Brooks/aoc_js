@@ -68,7 +68,7 @@ export function part2(text) {
       }
     }
 
-    return operand * stack.filter(Number.isInteger).reduce((a, b) => a * b, 1);
+    return operand * stack.filter(Number.isInteger).reduce(mult, 1);
   }
 }
 
