@@ -20,5 +20,3 @@ function process(text, index) {
 
   return previous;
 }
-
-part1("0,3,6", 11);
