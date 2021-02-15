@@ -14,12 +14,12 @@ describe("day25", () => {
       chai.expect(part1(example)).to.equal(14897079);
     });
 
-    it("error", () => {
-      chai.expect(() => part1("-1\n-1")).to.throw(Error);
-    });
-
     it("input", () => {
       chai.expect(part1(text)).to.equal(9177528);
+    });
+
+    it("error", () => {
+      chai.expect(() => part1("-1\n-1")).to.throw(Error);
     });
   });
 });
