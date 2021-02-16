@@ -12,7 +12,7 @@ export function part1(text) {
           operate = add;
           break;
         case "*":
-          operate = mult;
+          operate = mul;
           break;
         case "(":
           stack.push(operand, operate);
@@ -45,7 +45,7 @@ export function part2(text) {
           operate = add;
           break;
         case "*":
-          stack.push(operand, mult);
+          stack.push(operand, mul);
           operand = 0;
           operate = add;
           break;
@@ -64,11 +64,11 @@ export function part2(text) {
           }
           break;
         default:
-          operand = operate(operand, +token);
+          operand += +token;
       }
     }
 
-    return operand * stack.filter(Number.isInteger).reduce(mult, 1);
+    return operand * stack.filter(Number.isInteger).reduce(mul, 1);
   }
 }
 
@@ -76,6 +76,6 @@ function add(a, b) {
   return a + b;
 }
 
-function mult(a, b) {
+function mul(a, b) {
   return a * b;
 }
