@@ -10,11 +10,11 @@ const dir = {
 };
 
 export function part1(text) {
-  return tileCount(flips(text));
+  return tileCount(oddFlips(text));
 }
 
 export function part2(text, days = 100) {
-  const tiles = new Map(flips(text));
+  const tiles = new Map(oddFlips(text));
   const counts = new Map();
 
   for (let i = 0; i < days; i++) {
@@ -58,7 +58,7 @@ export function part2(text, days = 100) {
   }
 }
 
-function flips(text) {
+function oddFlips(text) {
   const xs = new Map();
 
   text.trim().split("\n").forEach(incrementIndex);
