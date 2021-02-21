@@ -5,9 +5,8 @@ export class Counter {
   }
 
   update(elements) {
-    const counts = this.counts;
     for (const key of elements) {
-      counts.set(key, (this.counts.get(key) ?? 0) + 1);
+      this.counts.set(key, (this.counts.get(key) ?? 0) + 1);
     }
   }
 
@@ -37,10 +36,10 @@ export class Counter {
 
   sub(element, n = 1) {
     const count = this.counts.get(element) - n;
-    if (0 < count) {
-      this.counts.set(element, count);
-    } else {
+    if (count === 0) {
       this.counts.delete(element);
+    } else {
+      this.counts.set(element, count);
     }
   }
 
