@@ -19,10 +19,7 @@ export function part2(text, days = 100) {
 
   for (let i = 0; i < days; i++) {
     countNeighbors();
-
-    for (const [x, ys] of counts) {
-      tiles.set(x, nextRow(x, ys));
-    }
+    nextTiles();
   }
 
   return tileCount(Array.from(tiles));
@@ -43,6 +40,12 @@ export function part2(text, days = 100) {
           }
         }
       }
+    }
+  }
+
+  function nextTiles() {
+    for (const [x, ys] of counts) {
+      tiles.set(x, nextRow(x, ys));
     }
   }
 
