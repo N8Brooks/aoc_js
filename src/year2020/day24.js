@@ -1,4 +1,5 @@
 import { add } from "../utils/math.js";
+import { pair, unpair } from "../utils/pairing.js";
 
 const dir = {
   ne: [0, 1],
@@ -10,86 +11,57 @@ const dir = {
 };
 
 export function part1(text) {
-  return tileCount(oddFlips(text));
+  return oddFlips(text).size;
 }
 
 export function part2(text, days = 100) {
-  const tiles = new Map(oddFlips(text));
   const counts = new Map();
+  let tiles = oddFlips(text);
 
   for (let i = 0; i < days; i++) {
     countNeighbors();
     nextTiles();
   }
 
-  return tileCount(Array.from(tiles));
+  return tiles.size;
 
   function countNeighbors() {
     counts.clear();
     for (const [xd, yd] of Object.values(dir)) {
-      for (const [x1, ys] of tiles) {
-        for (const y1 of ys) {
-          const x2 = x1 + xd;
-          const y2 = y1 + yd;
-
-          const count = counts.get(x2);
-          if (count === undefined) {
-            counts.set(x2, new Map([[y2, 1]]));
-          } else {
-            count.set(y2, (count.get(y2) ?? 0) + 1);
-          }
-        }
+      for (const z1 of tiles) {
+        const [x, y] = unpair(z1);
+        const z2 = pair(x + xd, y + yd);
+        counts.set(z2, (counts.get(z2) ?? 0) + 1);
       }
     }
   }
 
   function nextTiles() {
-    for (const [x, ys] of counts) {
-      tiles.set(x, nextRow(x, ys));
-    }
-  }
-
-  function nextRow(x, ys) {
-    return new Set(
-      Array.from(ys)
-        .filter(([y, count]) => count === 2 || (count === 1 && tiles.get(x)?.has(y)))
-        .map(([y]) => y)
+    tiles = new Set(
+      Array.from(counts)
+        .filter(([z, count]) => count == 2 || (count == 1 && tiles.has(z)))
+        .map(([z]) => z)
     );
   }
 }
 
 function oddFlips(text) {
-  const xs = new Map();
+  const flips = new Map();
 
   text.trim().split("\n").forEach(incrementIndex);
 
-  return Array.from(xs).map(filterEvens);
+  return new Set(
+    Array.from(flips)
+      .filter(([, flip]) => flip % 2)
+      .map(([z]) => z)
+  );
 
   function incrementIndex(line) {
     const [x, y] = Array.from(line.matchAll(/[ns]?[ew]/g))
       .map((tile) => dir[tile])
       .reduce(add, [0, 0]);
 
-    const ys = xs.get(x);
-    if (ys === undefined) {
-      xs.set(x, new Map([[y, 1]]));
-    } else {
-      ys.set(y, (ys.get(y) ?? 0) + 1);
-    }
+    const z = pair(x, y);
+    flips.set(z, (flips.get(z) ?? 0) + 1);
   }
-
-  function filterEvens([x, ys]) {
-    return [
-      x,
-      new Set(
-        Array.from(ys)
-          .filter(([, count]) => count % 2)
-          .map(([y]) => y)
-      ),
-    ];
-  }
-}
-
-function tileCount(tiles) {
-  return tiles.map(([, ys]) => Array.from(ys.values())).flat().length;
 }
