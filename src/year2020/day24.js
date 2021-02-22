@@ -29,8 +29,8 @@ export function part2(text, days = 100) {
     counts.clear();
     for (const [xd, yd] of Object.values(dir)) {
       for (const z1 of tiles) {
-        const [x, y] = unpair(z1);
-        const z2 = pair(x + xd, y + yd);
+        const [x1, y1] = unpair(z1);
+        const z2 = pair(x1 + xd, y1 + yd);
         counts.set(z2, (counts.get(z2) ?? 0) + 1);
       }
     }
