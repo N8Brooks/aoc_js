@@ -1,14 +1,12 @@
-import { Combination } from "js-combinatorics/commonjs/combinatorics.js";
+import { powerSet } from "combinatorial-generators";
 
 function process(text, k) {
   const nums = text.trim().split("\n").map(Number);
   const target = nums.reduce((a, b) => a + b) / k;
 
-  for (let comb = 1; comb < nums.length; comb++) {
-    for (const group of new Combination(nums, comb)) {
-      if (group.reduce((a, b) => a + b) == target) {
-        return group.reduce((a, b) => a * b);
-      }
+  for (const group of powerSet(nums)) {
+    if (group.reduce((a, b) => a + b, 0) == target) {
+      return group.reduce((a, b) => a * b);
     }
   }
 }

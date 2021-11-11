@@ -20,7 +20,7 @@
   "homepage": "https://github.com/N8Brooks/aoc_js#readme",
   "dependencies": {
     "array-keyed-map": "^2.0.1",
-    "js-combinatorics": "^1.4.5",
+    "combinatorial-generators": "^0.4.1",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
