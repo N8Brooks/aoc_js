@@ -1,5 +1,5 @@
 import ArrayKeyedMap from "array-keyed-map";
-import { product } from "combinatorial-generators";
+import { cartesianProduct } from "combinatorial-generators";
 
 export function part1(text, dimensions = 3) {
   return process(text, dimensions);
@@ -11,7 +11,7 @@ export function part2(text, dimensions = 4) {
 
 function process(text, dimensions, range = 6) {
   const pad = Array(dimensions - 2).fill(0);
-  const directions = Array.from(product(1, ...Array(dimensions).fill([-1, 1, 0])));
+  const directions = Array.from(cartesianProduct(...Array(dimensions).fill([-1, 1, 0])));
   directions.pop();
 
   const counts = new ArrayKeyedMap();
